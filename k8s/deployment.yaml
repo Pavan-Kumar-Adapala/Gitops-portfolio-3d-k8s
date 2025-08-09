@@ -16,13 +16,13 @@ spec:
       containers:
         - name: portfolio-3d-container
           # github actions workflow will replace the image automatically
-          image: adapaladocker/personal_portfolio_3d:development-ebc13a30cdaf35a7cc5863e6a4f03efbaabba03f # Replace with your Docker image
+          image: adapaladocker/personal_portfolio_3d:development-644a605ca947b9bebcd1e94bf6c77cc91057ea24 # Replace with your Docker image
           ports:
             - containerPort: 80 # Port on which the application listens
           env:
             - name: NODE_ENV
               # The value is auomatically updated by GitHub Actions workflow
-              value: "development" # Environment variable for production mode
+              value: "development-644a605ca947b9bebcd1e94bf6c77cc91057ea24" # Environment variable for production mode
           resources:
             requests:
               memory: "256Mi"
@@ -63,3 +63,7 @@ spec:
 #     http:
 #       paths:
 ---
+spec:
+  template:
+    spec:
+      containers: []
