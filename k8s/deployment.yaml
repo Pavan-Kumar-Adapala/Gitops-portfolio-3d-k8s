@@ -19,10 +19,6 @@ spec:
           image: adapaladocker/personal_portfolio_3d:Prod-17fbfee034d502a9ac27efc756120c8856e75800 # Replace with your Docker image
           ports:
             - containerPort: 80 # Port on which the application listens
-          env:
-            - name: NODE_ENV
-              # The value is auomatically updated by GitHub Actions workflow
-              value: "Prod-716dcfa498ba5c1c83b5ce33494a13afc85a0807" # Environment variable for production mode
           resources:
             requests:
               memory: "256Mi"
