@@ -45,11 +45,6 @@ spec:
       port: 8080 # Port exposed by the service
       targetPort: 80 # Port on the container to forward traffic to 
   type: ClusterIP # Internal service type for communication within the cluster, type: LoadBalancer # Exposes the service externally
-  template:
-    spec:
-      containers:
-        - image: adapaladocker/personal_portfolio_3d:Prod-2c8abae281d143b39ea2d4fb99c7752fdfea4adc
-          env: []
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
 # metadata:
@@ -63,7 +58,3 @@ spec:
 #     http:
 #       paths:
 ---
-spec:
-  template:
-    spec:
-      containers: []
