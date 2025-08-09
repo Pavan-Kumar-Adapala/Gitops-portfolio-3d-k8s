@@ -63,9 +63,3 @@ spec:
 #     http:
 #       paths:
 ---
-spec:
-  template:
-    spec:
-      containers:
-        - image: adapaladocker/personal_portfolio_3d:development-ebc13a30cdaf35a7cc5863e6a4f03efbaabba03f
-          env: []
