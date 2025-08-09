@@ -1,0 +1,61 @@
+apiversion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-3d
+  namespace: portfolio-3d # Namespace for the deployment
+spec:
+  replicas: 2 # Number of replicas for high availability
+  selector:
+    matchLabels:
+      app: portfolio-3d
+  template:
+    metadata:
+      labels:
+        app: portfolio-3d
+    spec:
+      containers:
+        - name: portfolio-3d-container
+          # github actions workflow will replace the image automatically
+          image: adapaladocker/personal_portfolio_3d:development-644a605ca947b9bebcd1e94bf6c77cc91057ea24 # Replace with your Docker image
+          ports:
+            - containerPort: 80 # Port on which the application listens
+          env:
+            - name: NODE_ENV
+              # The value is auomatically updated by GitHub Actions workflow
+              value: "development-644a605ca947b9bebcd1e94bf6c77cc91057ea24" # Environment variable for production mode
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+      restartPolicy: Always # Ensures the container restarts on failure or crash
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-3d-service
+  namespace: portfolio-3d # Namespace for the service 
+spec:
+  selector:
+    app: portfolio-3d # Matches the deployment label
+  ports:
+    - protocol: TCP
+      port: 8080 # Port exposed by the service
+      targetPort: 80 # Port on the container to forward traffic to 
+  type: ClusterIP # Internal service type for communication within the cluster, type: LoadBalancer # Exposes the service externally
+---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: portfolio-3d-ingress
+#   namespace: portfolio-3d # Namespace for the ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: / # Rewrite target for the ingress
+# spec:
+#   rules:
+#   - host: portfolio.pavanclouds.com # Replace with your domain
+#     http:
+#       paths:
+---
