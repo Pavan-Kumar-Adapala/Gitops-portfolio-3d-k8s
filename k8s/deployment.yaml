@@ -16,7 +16,7 @@ spec:
       containers:
         - name: portfolio-3d-container
           # github actions workflow will replace the image automatically
-          image: adapaladocker/personal_portfolio_3d:Prod # Replace with your Docker image
+          image: adapaladocker/personal_portfolio_3d:Prod-2c8abae281d143b39ea2d4fb99c7752fdfea4adc # Replace with your Docker image
           ports:
             - containerPort: 80 # Port on which the application listens
           env:
@@ -48,7 +48,7 @@ spec:
   template:
     spec:
       containers:
-        - image: adapaladocker/personal_portfolio_3d:Prod
+        - image: adapaladocker/personal_portfolio_3d:Prod-2c8abae281d143b39ea2d4fb99c7752fdfea4adc
           env: []
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
@@ -67,5 +67,5 @@ spec:
   template:
     spec:
       containers:
-        - image: adapaladocker/personal_portfolio_3d:Prod
+        - image: adapaladocker/personal_portfolio_3d:Prod-2c8abae281d143b39ea2d4fb99c7752fdfea4adc
           env: []
