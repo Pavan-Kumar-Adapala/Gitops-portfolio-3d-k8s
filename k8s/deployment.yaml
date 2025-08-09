@@ -14,26 +14,26 @@ spec:
         app: portfolio-3d
     spec:
       containers:
-      - name: portfolio-3d-container
-        # github actions workflow will replace the image automatically
-        image: adapaladocker/personal_portfolio_3d:latest # Replace with your Docker image
-        ports:
-          - containerPort: 80 # Port on which the application listens
-        env:
-          - name: NODE_ENV
-            # The value is auomatically updated by GitHub Actions workflow
-            value: "production" # Environment variable for production mode
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "250m"
-          limits:
-            memory: "1Gi"
-            cpu: "1"
+        - name: portfolio-3d-container
+          # github actions workflow will replace the image automatically
+          image: adapaladocker/personal_portfolio_3d:development # Replace with your Docker image
+          ports:
+            - containerPort: 80 # Port on which the application listens
+          env:
+            - name: NODE_ENV
+              # The value is auomatically updated by GitHub Actions workflow
+              value: "development" # Environment variable for production mode
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
       restartPolicy: Always # Ensures the container restarts on failure or crash
 ---
 apiVersion: v1
-kind: Service 
+kind: Service
 metadata:
   name: portfolio-3d-service
   namespace: portfolio-3d # Namespace for the service 
@@ -45,7 +45,11 @@ spec:
       port: 8080 # Port exposed by the service
       targetPort: 80 # Port on the container to forward traffic to 
   type: ClusterIP # Internal service type for communication within the cluster, type: LoadBalancer # Exposes the service externally
----
+  template:
+    spec:
+      containers:
+        - image: adapaladocker/personal_portfolio_3d:development
+          env: []
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
 # metadata:
@@ -58,3 +62,10 @@ spec:
 #   - host: portfolio.pavanclouds.com # Replace with your domain
 #     http:
 #       paths:
+---
+spec:
+  template:
+    spec:
+      containers:
+        - image: adapaladocker/personal_portfolio_3d:development
+          env: []
