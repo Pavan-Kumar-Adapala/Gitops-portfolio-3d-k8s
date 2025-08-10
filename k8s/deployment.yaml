@@ -16,7 +16,7 @@ spec:
       containers:
         - name: portfolio-3d-container
           # github actions workflow will replace the image automatically
-          image: adapaladocker/personal_portfolio_3d:development-c3cb3e4b2f3b7723479a8583e9772c0eceb6d30f # Replace with your Docker image
+          image: adapaladocker/personal_portfolio_3d:development-94fb7b1db1c151648d92348d76912006332ee5d6 # Replace with your Docker image
           ports:
             - containerPort: 80 # Port on which the application listens
 
