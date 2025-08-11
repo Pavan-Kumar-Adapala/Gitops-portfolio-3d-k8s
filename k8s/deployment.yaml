@@ -2,9 +2,9 @@ apiversion: apps/v1
 kind: Deployment
 metadata:
   name: portfolio-3d
-  namespace: portfolio-3d # Namespace for the deployment
+  namespace: portfolio-3d
 spec:
-  replicas: 2 # Number of replicas for high availability
+  replicas: 2
   selector:
     matchLabels:
       app: portfolio-3d
@@ -15,10 +15,9 @@ spec:
     spec:
       containers:
         - name: portfolio-3d-container
-          # github actions workflow will replace the image automatically
-          image: adapaladocker/personal_portfolio_3d:development-9577890613ddbafd1e75676a45947ad1735240f1 # Replace with your Docker image
+          image: adapaladocker/personal_portfolio_3d:development-9577890613ddbafd1e75676a45947ad1735240f1
           ports:
-            - containerPort: 80 # Port on which the application listens
+            - containerPort: 80
 
           resources:
             requests:
@@ -27,21 +26,21 @@ spec:
             limits:
               memory: "1Gi"
               cpu: "1"
-      restartPolicy: Always # Ensures the container restarts on failure or crash
+      restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: portfolio-3d-service
-  namespace: portfolio-3d # Namespace for the service 
+  namespace: portfolio-3d
 spec:
   selector:
-    app: portfolio-3d # Matches the deployment label
+    app: portfolio-3d
   ports:
     - protocol: TCP
-      port: 8080 # Port exposed by the service
-      targetPort: 80 # Port on the container to forward traffic to 
-  type: ClusterIP # Internal service type for communication within the cluster, type: LoadBalancer # Exposes the service externally
+      port: 8080
+      targetPort: 80
+  type: ClusterIP
 ---
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
