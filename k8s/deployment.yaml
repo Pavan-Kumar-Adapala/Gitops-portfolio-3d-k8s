@@ -52,9 +52,6 @@ kind: Ingress
 metadata:
   name: portfolio-3d-ingress
   namespace: portfolio-3d
-  annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
 spec:
   rules:
     - host: portfolio.pavanclouds.com
