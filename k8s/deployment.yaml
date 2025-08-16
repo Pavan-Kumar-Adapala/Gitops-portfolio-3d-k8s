@@ -43,6 +43,7 @@ spec:
     app: portfolio-3d
   ports:
     - protocol: TCP
-      port: 8080
+      port: 8080 
       targetPort: 80
-  type: ClusterIP
+      nodePort: 30332
+  type: NodePort
