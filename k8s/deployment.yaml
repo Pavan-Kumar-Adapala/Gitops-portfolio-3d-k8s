@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: portfolio-3d-container
-          image: adapaladocker/personal_portfolio_3d:development-c269222c3726935e4a17e4388740a39e8a94434c
+          image: adapaladocker/personal_portfolio_3d:development-ccfe05def9377966ded5c5c80bb2124ab1b69aaf
           ports:
             - containerPort: 80
 
